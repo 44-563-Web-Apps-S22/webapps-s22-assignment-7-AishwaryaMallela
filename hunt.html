@@ -14,6 +14,9 @@
         <p class="text-center">Click on the squares to search for a bird</p>
         <p class="text-center" id="shakes">Number of shakes is zero</p>
         <p class="text-center" id="score">Location score is unknown</p>
+        <p class="text-center">
+            <button class="btn btn-primary" onclick="newGame()">New Game</button>  
+        </p>
         <div class="image-grid d-flex flex-column justify-content-center align-items-center">
             <div class="row">
                 <div class="img-fluid"><img src="tree.jpeg" id="0" onclick="check(0)" height="100" width="100" alt="A tree picture"></div>
@@ -60,11 +63,11 @@
             </div>
         </div>
         <script>
-            let ids=['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
-            let shakeCount = 0;
-            let birdlLocation = 18;
-            let shakeselmt=document.getElementById('shakes');
-            let scoreelmt=document.getElementById('score');
+            var ids=['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
+            var shakeCount = 0;
+            var birdlLocation = 18;
+            var shakeselmt=document.getElementById('shakes');
+            var scoreelmt=document.getElementById('score');
             function check(position){
                 let imgid=ids[position];
                 let imgelmt=document.getElementById(imgid);
@@ -79,7 +82,7 @@
                 scoreelmt.innerText='Score is '+locationScore(position,birdlLocation);                
             }
             function locationScore(pos1,pos2){
-                var r1,r2,c1,c2;
+                let r1,r2,c1,c2;
                 let loc=[[0,1,2,3,4],[5,6,7,8,9],[10,11,12,13,14],[15,16,17,18,19],[20,21,22,23,24]];
                 for(let i=0;i<loc.length;i++){
                     for(let j=0;j<loc[i].length;j++){
@@ -109,6 +112,16 @@
                 else{
                     return 0;
                 }
+            }
+
+            function newGame() {
+                let random = Math.floor(Math.random() * (23 - 0 + 1) + 0);
+                console.log("Bird position is ", random);
+                birdLocation = random;
+                shakeselmt.innerText = 0;
+                ids.forEach( i => {
+                document.getElementById(i).src="tree.jpeg"
+                })
             }
            
         </script>

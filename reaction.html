@@ -23,7 +23,8 @@
       console.log(myTime) 
   }
   function startTime(){
-      for(let i=0;i<=3;i++){
+    let lmt = Math.floor(Math.random() * (10 - 2 + 1) + 2)
+      for(let i=lmt;i<=10;i++){
           setTimeout(()=>{ document.getElementById('countdown').innerHTML = i}, (3-i)*1000) 
       }
       setTimeout(()=>{
@@ -32,7 +33,7 @@
         }
         else{
             var buttonTime=Date.now();
-            let diff= (buttonTime-myTime);
+            let diff= Math.abs(buttonTime-myTime);
             document.getElementById('target').innerHTML= "Time was " +diff;
         }
     },3000)    
